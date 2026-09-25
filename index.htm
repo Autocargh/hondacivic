@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Honda Civic essence à vendre à Casablanca — 16 000 DH. Moteur hors service, véhicule vendu en l'état.">
+  <title>Honda Civic Essence à vendre — 16 000 DH | Casablanca</title>
+  <style>
+    :root {
+      --bg: #f5f6f8;
+      --card: #ffffff;
+      --text: #17202a;
+      --muted: #68727d;
+      --accent: #0b6e4f;
+      --accent-dark: #07543d;
+      --danger: #b42318;
+      --line: #e5e7eb;
+      --shadow: 0 12px 35px rgba(0,0,0,.08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    .container { width: min(1120px, calc(100% - 32px)); margin: auto; }
+    header {
+      background: linear-gradient(135deg, #0e3026, #0b6e4f);
+      color: white;
+      padding: 18px 0;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      box-shadow: 0 3px 18px rgba(0,0,0,.14);
+    }
+    .nav { display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .brand { font-weight:800; letter-spacing:.3px; }
+    .nav a { text-decoration:none; opacity:.92; font-size:.95rem; }
+    .hero { padding: 52px 0 30px; }
+    .hero-grid { display:grid; grid-template-columns: 1.25fr .75fr; gap:28px; align-items:stretch; }
+    .hero-card, .info-card, .section-card {
+      background:var(--card); border:1px solid var(--line); border-radius:22px; box-shadow:var(--shadow);
+    }
+    .hero-card { padding:34px; }
+    .eyebrow {
+      display:inline-flex; background:#e8f5ef; color:var(--accent-dark);
+      padding:7px 12px; border-radius:999px; font-weight:700; font-size:.85rem;
+    }
+    h1 { font-size: clamp(2rem, 5vw, 3.7rem); line-height:1.05; margin:18px 0 14px; }
+    .subtitle { color:var(--muted); max-width:680px; font-size:1.08rem; }
+    .price {
+      font-size:2.1rem; font-weight:900; color:var(--accent-dark); margin:25px 0 8px;
+    }
+    .price small { font-size:.95rem; font-weight:700; color:var(--muted); }
+    .alert {
+      margin-top:20px; padding:15px 17px; border-radius:14px;
+      background:#fff2f0; border:1px solid #ffd5cf; color:#7a271a;
+    }
+    .cta-row { display:flex; gap:12px; flex-wrap:wrap; margin-top:25px; }
+    .btn {
+      display:inline-flex; justify-content:center; align-items:center; min-height:48px;
+      padding:0 20px; border-radius:12px; text-decoration:none; font-weight:800;
+      border:1px solid transparent;
+    }
+    .btn-primary { background:var(--accent); color:white; }
+    .btn-primary:hover { background:var(--accent-dark); }
+    .btn-light { background:white; border-color:var(--line); }
+    .info-card { padding:24px; display:flex; flex-direction:column; justify-content:center; }
+    .info-card h2 { margin-top:0; }
+    .specs { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:0; }
+    .spec { padding:13px; border:1px solid var(--line); border-radius:13px; background:#fafafa; }
+    .spec b { display:block; font-size:.78rem; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; }
+    .spec span { font-weight:750; }
+    section { padding:26px 0; }
+    .section-card { padding:28px; }
+    h2 { font-size:1.65rem; margin:0 0 16px; }
+    .gallery { display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; }
+    .thumb { border:0; padding:0; background:none; cursor:pointer; border-radius:16px; overflow:hidden; aspect-ratio:4/3; }
+    .thumb img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .2s; }
+    .thumb:hover img { transform:scale(1.03); }
+    .details { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    ul { padding-left:20px; }
+    li { margin:8px 0; }
+    .muted { color:var(--muted); }
+    .contact {
+      background:#0e3026; color:white; border-radius:22px; padding:30px;
+      display:flex; justify-content:space-between; align-items:center; gap:20px;
+    }
+    footer { padding:28px 0 45px; color:var(--muted); text-align:center; font-size:.9rem; }
+    .lightbox {
+      display:none; position:fixed; inset:0; z-index:100; background:rgba(0,0,0,.9);
+      align-items:center; justify-content:center; padding:25px;
+    }
+    .lightbox.open { display:flex; }
+    .lightbox img { max-width:95vw; max-height:90vh; object-fit:contain; border-radius:10px; }
+    .close {
+      position:fixed; top:18px; right:24px; color:white; background:none; border:0;
+      font-size:40px; cursor:pointer; line-height:1;
+    }
+    @media (max-width: 800px) {
+      .hero-grid, .details { grid-template-columns:1fr; }
+      .gallery { grid-template-columns:repeat(2, 1fr); }
+      .hero-card { padding:25px; }
+      .contact { flex-direction:column; align-items:flex-start; }
+    }
+    @media (max-width: 500px) {
+      .container { width:min(100% - 20px, 1120px); }
+      .gallery { grid-template-columns:1fr; }
+      .nav a { display:none; }
+      .specs { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="brand">Honda Civic • Annonce</div>
+    <nav><a href="#photos">Photos</a> &nbsp;&nbsp; <a href="#details">Détails</a> &nbsp;&nbsp; <a href="#contact">Contact</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="container hero">
+    <div class="hero-grid">
+      <article class="hero-card">
+        <span class="eyebrow">À VENDRE • CASABLANCA</span>
+        <h1>Honda Civic<br>Essence</h1>
+        <p class="subtitle">
+          Berline Honda Civic proposée en l'état. La carrosserie et l'intérieur sont visibles
+          sur les photos. Le véhicule est vendu avec son moteur hors service.
+        </p>
+        <div class="price">16 000 DH <small>prix demandé</small></div>
+        <div class="alert">
+          <strong>Important :</strong> moteur coulé / hors service, la voiture ne fonctionne pas
+          actuellement. Vente en l'état, à prévoir pour réparation ou projet mécanique.
+        </div>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#contact">Contacter le vendeur</a>
+          <a class="btn btn-light" href="#photos">Voir les photos</a>
+        </div>
+      </article>
+
+      <aside class="info-card">
+        <h2>Informations</h2>
+        <div class="specs">
+          <div class="spec"><b>Marque</b><span>Honda</span></div>
+          <div class="spec"><b>Modèle</b><span>Civic</span></div>
+          <div class="spec"><b>Carburant</b><span>Essence</span></div>
+          <div class="spec"><b>Boîte</b><span>Automatique</span></div>
+          <div class="spec"><b>Carrosserie</b><span>Berline 4 portes</span></div>
+          <div class="spec"><b>Moteur</b><span>Hors service</span></div>
+          <div class="spec"><b>Prix</b><span>16 000 DH</span></div>
+          <div class="spec"><b>Lieu</b><span>Casablanca</span></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <section id="photos">
+    <div class="container">
+      <div class="section-card">
+        <h2>Photos du véhicule</h2>
+        <p class="muted">Photos réelles du véhicule. Cliquez sur une photo pour l'agrandir.</p>
+        <div class="gallery">
+          <button class="thumb" type="button" onclick="openLightbox('images/honda-civic-1.png')" aria-label="Voir la photo 1">
+        <img src="images/honda-civic-1.png" alt="Honda Civic - photo 1" loading="lazy">
+    </button>
+<button class="thumb" type="button" onclick="openLightbox('images/honda-civic-2.png')" aria-label="Voir la photo 2">
+        <img src="images/honda-civic-2.png" alt="Honda Civic - photo 2" loading="lazy">
+    </button>
+<button class="thumb" type="button" onclick="openLightbox('images/honda-civic-3.png')" aria-label="Voir la photo 3">
+        <img src="images/honda-civic-3.png" alt="Honda Civic - photo 3" loading="lazy">
+    </button>
+<button class="thumb" type="button" onclick="openLightbox('images/honda-civic-4.png')" aria-label="Voir la photo 4">
+        <img src="images/honda-civic-4.png" alt="Honda Civic - photo 4" loading="lazy">
+    </button>
+<button class="thumb" type="button" onclick="openLightbox('images/honda-civic-5.png')" aria-label="Voir la photo 5">
+        <img src="images/honda-civic-5.png" alt="Honda Civic - photo 5" loading="lazy">
+    </button>
+<button class="thumb" type="button" onclick="openLightbox('images/honda-civic-6.png')" aria-label="Voir la photo 6">
+        <img src="images/honda-civic-6.png" alt="Honda Civic - photo 6" loading="lazy">
+    </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="details">
+    <div class="container">
+      <div class="details">
+        <div class="section-card">
+          <h2>État du véhicule</h2>
+          <ul>
+            <li><strong>Moteur :</strong> coulé / hors service, véhicule non roulant.</li>
+            <li><strong>Carrosserie :</strong> traces d'utilisation, rayures et marques visibles sur les photos.</li>
+            <li><strong>Intérieur :</strong> sellerie tissu gris, habitacle d'origine.</li>
+            <li><strong>Transmission :</strong> boîte automatique.</li>
+            <li><strong>Équipements :</strong> tableau de bord, autoradio et commandes visibles sur les photos.</li>
+            <li><strong>Vente :</strong> en l'état, sans promesse de fonctionnement mécanique.</li>
+          </ul>
+        </div>
+
+        <div class="section-card">
+          <h2>À préciser avec le vendeur</h2>
+          <p class="muted">
+            Pour éviter toute ambiguïté, les informations ci-dessous sont à confirmer avant l'achat :
+          </p>
+          <ul>
+            <li>Année de mise en circulation</li>
+            <li>Kilométrage</li>
+            <li>Cylindrée et référence exacte du moteur</li>
+            <li>Situation des papiers et carte grise</li>
+            <li>État de la boîte automatique</li>
+            <li>État de la batterie et des pneus</li>
+            <li>Prix final et modalités de cession</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="contact">
+        <div>
+          <h2>Intéressé par la Honda Civic ?</h2>
+          <p style="margin:0; opacity:.85;">
+            Contactez le vendeur pour connaître les détails, voir le véhicule et convenir d'un rendez-vous.
+          </p>
+        </div>
+        <a class="btn btn-primary" style="background:white;color:#0e3026;" href="tel:+212600000000">Appeler le vendeur</a>
+      </div>
+      <p class="muted" style="margin-top:10px;">
+        Remplacez <strong>+212600000000</strong> dans le fichier par votre vrai numéro avant de publier le site.
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  Honda Civic Essence — Annonce automobile — Casablanca — 16 000 DH
+</footer>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="close" aria-label="Fermer" onclick="event.stopPropagation();closeLightbox()">×</button>
+  <img id="lightboxImage" src="" alt="Photo agrandie de la Honda Civic" onclick="event.stopPropagation()">
+</div>
+
+<script>
+  function openLightbox(src) {
+    document.getElementById('lightboxImage').src = src;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
+</body>
+</html>
